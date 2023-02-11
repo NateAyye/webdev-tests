@@ -5,20 +5,14 @@ class MyButton extends HTMLElement {
     this.attachShadow({
       mode: "open",
     });
-
-    this.href = this.attributes.getNamedItem("href");
-    console.log(this.href.value);
   }
 
   initializeRipples() {
     this.shadowRoot.addEventListener("click", (e) => {
-      e.preventDefault();
       // * Toggle the current active button to off
       this.toggleCurrentActiveButton();
-
       // * Add the active Attribute to the currently clicked button
       this.toggleAttribute("active", true);
-
       // * Add the Ripple Effect to the button
       this.rippleEffect(this, e);
     });
@@ -27,11 +21,8 @@ class MyButton extends HTMLElement {
   toggleCurrentActiveButton = () => {
     // * Get the Element that has the active attribute
     const activeButton = document?.querySelector("[active]");
-
     // * if there is an active button then toggle the active attribute off
-    if (activeButton) {
-      activeButton.toggleAttribute("active", false);
-    }
+    if (activeButton) activeButton.toggleAttribute("active", false);
   };
 
   rippleEffect = (btn, event) => {
@@ -44,39 +35,34 @@ class MyButton extends HTMLElement {
     ripples.style.left = x + "px";
     ripples.style.top = y + "px";
 
-    if (!this.shadowRoot.querySelector("span")) {
+    if (!this.shadowRoot.querySelector("span"))
       this.shadowRoot.querySelector("a").appendChild(ripples);
-    }
 
     // * setting the timeout for the ripple
-    setTimeout(() => {
-      ripples.remove();
-    }, 700);
+    setTimeout(() => ripples.remove(), 700);
   };
 
   connectedCallback() {
-    console.log("connected -- rendering");
+    this.href = this.attributes.getNamedItem("href");
     this.color = this.getAttribute("color");
     this.render();
-    this.initializeRipples();
   }
 
   render() {
     this.shadowRoot.innerHTML = `
     <style>
-        @keyframes animate {
-    0% {
-      width: 0;
-      height: 0;
-      opacity: 0.2;
-    }
-    100% {
-      width: 400px;
-      height: 400px;
-      opacity: 0;
-    }
-
-  }
+      @keyframes animate {
+        0% {
+          width: 0;
+          height: 0;
+          opacity: 0.2;
+        }
+        100% {
+          width: 400px;
+          height: 400px;
+          opacity: 0;
+        }
+      } 
     
       a {
       display: inline-block;
@@ -105,13 +91,9 @@ class MyButton extends HTMLElement {
       margin: 0;
       font-weight: 700;
       color: inherit;
-      filter: invert(1) grayscale(1);
+      filter: invert(1) grayscale(1) brightness(5);
       }
       
-      #text {
-        color: ${this.color};
-        filter: invert(1) grayscale(1);
-      }
     </style>
     <a href={this.href.value}>
     <p>
@@ -120,6 +102,7 @@ class MyButton extends HTMLElement {
       </p>
     </a>
     `;
+    this.initializeRipples();
   }
 }
 
