@@ -17,10 +17,11 @@ template.innerHTML = `
     <input type="checkbox" />
     <slot></slot>
     <span class="description">
-    <slot name="description"></slot>
-</span>
+        <slot name="description"></slot>
+    </span>
 </label>
 `;
+
 class TodoItem extends HTMLElement {
   constructor() {
     super();
@@ -40,6 +41,7 @@ class TodoItem extends HTMLElement {
   connectedCallback() {
     console.log("connected");
   }
+
   disconnectedCallback() {
     console.log("disconnected");
   }
