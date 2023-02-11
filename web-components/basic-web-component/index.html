@@ -1,31 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script defer src="TodoItem.js"></script>
-    <script defer src="ExpandableList.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script defer src="components/TodoItem.js"></script>
+    <script defer src="components/ExpandableList.js"></script>
+    <style>
+      .blog-post {
+        background: #00d9ff;
+      }
+    </style>
     <title>Document</title>
-</head>
-<body>
-<label>
-    <select>
+  </head>
+  <body>
+    <h3>First Course</h3>
+    <hr />
+    <label>
+      <select>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
-    </select>
-</label>
-<todo-item checked>Todo 4
-<span slot="description"> small text</span>
-</todo-item>
-<todo-item>Todo 2</todo-item>
-<todo-item>Todo 3</todo-item>
+      </select>
+    </label>
+    <todo-item checked
+      >Todo 4
+      <span slot="description"> small text</span>
+    </todo-item>
+    <todo-item>Todo 2</todo-item>
+    <todo-item>Todo 3</todo-item>
 
-<ul is="expandable-list" data-expanded>
-  <li>first</li>
-  <li>second</li>
-</ul>
-</body>
+    <ul is="expandable-list" data-expanded>
+      <li>first</li>
+      <li>second</li>
+    </ul>
+
+    <br />
+    <h3>Second Course</h3>
+    <hr />
+
+    <blog-post></blog-post>
+
+    <script src="app.js"></script>
+  </body>
 </html>
