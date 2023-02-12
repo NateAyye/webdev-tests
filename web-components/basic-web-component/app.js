@@ -4,17 +4,8 @@ class BlogPost extends HTMLElement {
 
     // Connecting a shadowRoot to the Element in order to have separate styling
     this.attachShadow({
-      //<editor-fold desc="Modes">
-      // open: means the outside dom can access/affect the element
-      // closed: the outside dom cannot affect the shadow element
-      //</editor-fold>
-      mode: "open",
-      //<editor-fold desc="Delegate Focus modes">
-      // true: when a non-focusable part of the shadow DOM is clicked, or .focus() is called on the host element
-      //      , the first focusable part is given focus, and the shadow host is given any available :focus styling.
-      // false (default):  act Normally
-      //</editor-fold>
-      delegatesFocus: true,
+      mode: "open", // default: 'closed'
+      delegatesFocus: true, // default: false
     });
   }
 
